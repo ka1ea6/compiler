@@ -8,7 +8,6 @@ $exe_files = @(Get-ChildItem "$input_dir\*.exe")
 if ($ms_files.Count -gt 0)
 {
     dotnet run -- $ms_files -r $MSCORE_PATH
-    dotnet-ildasm $exe_files > $disassembled_file
     echo "Compiled files in  $input_dir"
 }
 else {
