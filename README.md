@@ -9,7 +9,7 @@ Group Members
 | ----------------| --------------|
 | Kaleab Gulilat  |   ETS0580/11  |
 | Kaleab Tsegaye  |   ETS0580/11  |
-| Kena Getachew   |   ETS05__/11  |  
-| Kidus G/kristos |   ETS05__/11  |
-| Kindie Nega     |   ETS05__/11  |  
+| Kena Getachew   |   ETS0602/11  |  
+| Kidus G/kristos |   ETS0614/11  |
+| Kindie Nega     |   ETS0620/11  |  
 | Salhadin Usman  |   ETS0921/11  |  

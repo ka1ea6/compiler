@@ -239,7 +239,6 @@ namespace compiler.CodeAnalysis
             if (node.Function == BuiltinFunctions.Print)
             {
                 var message = (string)EvaluateExpression(node.Arguments[0]);
-                Console.WriteLine(message);
                 return null;
             }
         

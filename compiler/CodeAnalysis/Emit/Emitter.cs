@@ -303,7 +303,6 @@ namespace compiler.CodeAnalysis.Emit
 
         private void EmitExpression(ILProcessor ilProcessor, BoundExpression node)
         {
-            Console.WriteLine($"Kind: {node.Kind}");
             switch (node.Kind)
             {
                 case BoundNodeKind.LiteralExpression:
@@ -508,7 +507,6 @@ namespace compiler.CodeAnalysis.Emit
         {
             foreach (var argument in node.Arguments)
             {
-                Console.WriteLine($"Node args: {argument}");
                 EmitExpression(ilProcessor, argument);
             }
 

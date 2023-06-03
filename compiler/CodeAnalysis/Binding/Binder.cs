@@ -131,43 +131,14 @@ namespace compiler.CodeAnalysis.Binding
             var functionBodies = ImmutableDictionary.CreateBuilder<FunctionSymbol, BoundBlockStatement>();
             var diagnostics = ImmutableArray.CreateBuilder<Diagnostic>();
 
-            foreach (var function in globalScope.Functions)
-            {
-                var binder = new Binder(isScript, parentScope, function);
-                var body = binder.BindStatement(function.Declaration.Body);
-                var loweredBody = Lowerer.Lower(function, body);
-
-                if (function.Type != TypeSymbol.Void && !ControlFlowGraph.AllPathsReturn(loweredBody))
-                    binder._diagnostics.ReportAllPathsMustReturn(function.Declaration.Identifier.Location);
-
-                functionBodies.Add(function, loweredBody);
-
-                diagnostics.AddRange(binder.Diagnostics);
-            }
 
             if (globalScope.MainFunction != null && globalScope.Statements.Any())
             {
                 var body = Lowerer.Lower(globalScope.MainFunction, new BoundBlockStatement(globalScope.Statements));
                 functionBodies.Add(globalScope.MainFunction, body);
             }
-            else if (globalScope.ScriptFunction != null)
-            {
-                var statements = globalScope.Statements;
-                if (statements.Length == 1 &&
-                    statements[0] is BoundExpressionStatement es &&
-                    es.Expression.Type != TypeSymbol.Void)
-                {
-                    statements = statements.SetItem(0, new BoundReturnStatement(es.Expression));
-                }
-                else if (statements.Any() && statements.Last().Kind != BoundNodeKind.ReturnStatement)
-                {
-                    var nullValue = new BoundLiteralExpression("");
-                    statements = statements.Add(new BoundReturnStatement(nullValue));
-                }
 
-                var body = Lowerer.Lower(globalScope.ScriptFunction, new BoundBlockStatement(statements));
-                functionBodies.Add(globalScope.ScriptFunction, body);
-            }
+
 
             return new BoundProgram(previous,
                                     diagnostics.ToImmutable(),
