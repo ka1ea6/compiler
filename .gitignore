@@ -4,4 +4,4 @@ x64/
 [Bb]in/
 [Oo]bj/
 .vs
-compiler/*.exe
+to_compile/*.exe
