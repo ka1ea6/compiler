@@ -290,8 +290,6 @@ namespace compiler.CodeAnalysis.Binding
                     return BindWhileStatement((WhileStatementSyntax)syntax);
                 case SyntaxKind.ForStatement:
                     return BindForStatement((ForStatementSyntax)syntax);
-                //case SyntaxKind.ReturnStatement:
-                    //return BindReturnStatement((ReturnStatementSyntax)syntax);
                 case SyntaxKind.ExpressionStatement:
                     return BindExpressionStatement((ExpressionStatementSyntax)syntax);
                 default:

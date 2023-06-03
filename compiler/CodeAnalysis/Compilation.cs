@@ -138,7 +138,7 @@ namespace compiler.CodeAnalysis
         public void EmitTree(FunctionSymbol symbol, TextWriter writer)
         {
             var program = GetProgram();
-            symbol.WriteTo(writer);
+            //symbol.WriteTo(writer);
             writer.WriteLine();
             if (!program.Functions.TryGetValue(symbol, out var body))
                 return;
