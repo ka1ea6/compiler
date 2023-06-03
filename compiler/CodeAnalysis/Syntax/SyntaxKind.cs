@@ -35,12 +35,9 @@ namespace compiler.CodeAnalysis.Syntax
         IdentifierToken,
 
         // Keywords
-        BreakKeyword,
-        ContinueKeyword,
         ElseKeyword,
         FalseKeyword,
         ForKeyword,
-        FunctionKeyword,
         IfKeyword,
         LetKeyword,
         ReturnKeyword,
@@ -52,7 +49,6 @@ namespace compiler.CodeAnalysis.Syntax
 
         // Nodes
         CompilationUnit,
-        FunctionDeclaration,
         GlobalStatement,
         Parameter,
         TypeClause,
@@ -65,9 +61,6 @@ namespace compiler.CodeAnalysis.Syntax
         WhileStatement,
         DoWhileStatement,
         ForStatement,
-        BreakStatement,
-        ContinueStatement,
-        ReturnStatement,
         ExpressionStatement,
 
         // Expressions
@@ -78,5 +71,7 @@ namespace compiler.CodeAnalysis.Syntax
         ParenthesizedExpression,
         AssignmentExpression,
         CallExpression,
+        FunctionKeyword,
+        FunctionDeclaration,
     }
 }

@@ -33,13 +33,7 @@ namespace compiler.CodeAnalysis.Syntax
             yield return CloseBraceToken;
         }
     }
-    partial class BreakStatementSyntax
-    {
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return Keyword;
-        }
-    }
+
     partial class CallExpressionSyntax
     {
         public override IEnumerable<SyntaxNode> GetChildren()
@@ -60,23 +54,8 @@ namespace compiler.CodeAnalysis.Syntax
             yield return EndOfFileToken;
         }
     }
-    partial class ContinueStatementSyntax
-    {
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return Keyword;
-        }
-    }
-    partial class DoWhileStatementSyntax
-    {
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return DoKeyword;
-            yield return Body;
-            yield return WhileKeyword;
-            yield return Condition;
-        }
-    }
+
+
     partial class ElseClauseSyntax
     {
         public override IEnumerable<SyntaxNode> GetChildren()
@@ -120,6 +99,7 @@ namespace compiler.CodeAnalysis.Syntax
             yield return Body;
         }
     }
+
     partial class GlobalStatementSyntax
     {
         public override IEnumerable<SyntaxNode> GetChildren()
@@ -169,15 +149,7 @@ namespace compiler.CodeAnalysis.Syntax
             yield return CloseParenthesisToken;
         }
     }
-    partial class ReturnStatementSyntax
-    {
-        public override IEnumerable<SyntaxNode> GetChildren()
-        {
-            yield return ReturnKeyword;
-            if (Expression != null)
-                yield return Expression;
-        }
-    }
+
     partial class TypeClauseSyntax
     {
         public override IEnumerable<SyntaxNode> GetChildren()

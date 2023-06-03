@@ -303,6 +303,7 @@ namespace compiler.CodeAnalysis.Emit
 
         private void EmitExpression(ILProcessor ilProcessor, BoundExpression node)
         {
+            Console.WriteLine($"Kind: {node.Kind}");
             switch (node.Kind)
             {
                 case BoundNodeKind.LiteralExpression:
@@ -505,28 +506,13 @@ namespace compiler.CodeAnalysis.Emit
 
         private void EmitCallExpression(ILProcessor ilProcessor, BoundCallExpression node)
         {
-            if (node.Function == BuiltinFunctions.Rnd)
-            {
-                if (_randomFieldDefinition == null)
-                    EmitRandomField();
-
-                ilProcessor.Emit(OpCodes.Ldsfld, _randomFieldDefinition);
-
-                foreach (var argument in node.Arguments)
-                    EmitExpression(ilProcessor, argument);
-
-                ilProcessor.Emit(OpCodes.Callvirt, _randomNextReference);
-                return;
-            }
-
             foreach (var argument in node.Arguments)
-                EmitExpression(ilProcessor, argument);
-
-            if (node.Function == BuiltinFunctions.Input)
             {
-                ilProcessor.Emit(OpCodes.Call, _consoleReadLineReference);
+                Console.WriteLine($"Node args: {argument}");
+                EmitExpression(ilProcessor, argument);
             }
-            else if (node.Function == BuiltinFunctions.Print)
+
+            if (node.Function == BuiltinFunctions.Print)
             {
                 ilProcessor.Emit(OpCodes.Call, _consoleWriteLineReference);
             }

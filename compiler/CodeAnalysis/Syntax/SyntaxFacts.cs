@@ -58,24 +58,17 @@ namespace compiler.CodeAnalysis.Syntax
         {
             switch (text)
             {
-                case "break":
-                    return SyntaxKind.BreakKeyword;
-                case "continue":
-                    return SyntaxKind.ContinueKeyword;
+          
                 case "else":
                     return SyntaxKind.ElseKeyword;
                 case "false":
                     return SyntaxKind.FalseKeyword;
                 case "for":
                     return SyntaxKind.ForKeyword;
-                case "function":
-                    return SyntaxKind.FunctionKeyword;
                 case "if":
                     return SyntaxKind.IfKeyword;
                 case "let":
                     return SyntaxKind.LetKeyword;
-                case "return":
-                    return SyntaxKind.ReturnKeyword;
                 case "to":
                     return SyntaxKind.ToKeyword;
                 case "true":
@@ -163,25 +156,17 @@ namespace compiler.CodeAnalysis.Syntax
                     return ":";
                 case SyntaxKind.CommaToken:
                     return ",";
-                case SyntaxKind.BreakKeyword:
-                    return "break";
-                case SyntaxKind.ContinueKeyword:
-                    return "continue";
                 case SyntaxKind.ElseKeyword:
                     return "else";
                 case SyntaxKind.FalseKeyword:
                     return "false";
                 case SyntaxKind.ForKeyword:
                     return "for";
-                case SyntaxKind.FunctionKeyword:
-                    return "function";
                 case SyntaxKind.IfKeyword:
                     return "if";
                 case SyntaxKind.LetKeyword:
                     return "let";
                 case SyntaxKind.ReturnKeyword:
-                    return "return";
-                case SyntaxKind.ToKeyword:
                     return "to";
                 case SyntaxKind.TrueKeyword:
                     return "true";

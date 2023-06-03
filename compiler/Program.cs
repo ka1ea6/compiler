@@ -6,19 +6,10 @@ using compiler.CodeAnalysis;
 using compiler.CodeAnalysis.Symbols;
 using compiler.CodeAnalysis.Syntax;
 using compiler.IO;
-using compiler.REPL;
 using Mono.Options;
 
 namespace compiler
 {
-    //internal static class Program
-    //{
-    //    private static void Main()
-    //    {
-    //        var repl = new MinskRepl();
-    //        repl.Run();
-    //    }
-    //}
     internal static class Program
     {
         private static int Main(string[] args)

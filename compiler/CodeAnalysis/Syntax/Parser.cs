@@ -169,16 +169,8 @@ namespace compiler.CodeAnalysis.Syntax
                     return ParseIfStatement();
                 case SyntaxKind.WhileKeyword:
                     return ParseWhileStatement();
-                case SyntaxKind.DoKeyword:
-                    return ParseDoWhileStatement();
                 case SyntaxKind.ForKeyword:
                     return ParseForStatement();
-                case SyntaxKind.BreakKeyword:
-                    return ParseBreakStatement();
-                case SyntaxKind.ContinueKeyword:
-                    return ParseContinueStatement();
-                case SyntaxKind.ReturnKeyword:
-                    return ParseReturnStatement();
                 default:
                     return ParseExpressionStatement();
             }
@@ -267,14 +259,6 @@ namespace compiler.CodeAnalysis.Syntax
             return new WhileStatementSyntax(_syntaxTree, keyword, condition, body);
         }
 
-        private StatementSyntax ParseDoWhileStatement()
-        {
-            var doKeyword = MatchToken(SyntaxKind.DoKeyword);
-            var body = ParseStatement();
-            var whileKeyword = MatchToken(SyntaxKind.WhileKeyword);
-            var condition = ParseExpression();
-            return new DoWhileStatementSyntax(_syntaxTree, doKeyword, body, whileKeyword, condition);
-        }
 
         private StatementSyntax ParseForStatement()
         {
@@ -286,29 +270,6 @@ namespace compiler.CodeAnalysis.Syntax
             var upperBound = ParseExpression();
             var body = ParseStatement();
             return new ForStatementSyntax(_syntaxTree, keyword, identifier, equalsToken, lowerBound, toKeyword, upperBound, body);
-        }
-
-        private StatementSyntax ParseBreakStatement()
-        {
-            var keyword = MatchToken(SyntaxKind.BreakKeyword);
-            return new BreakStatementSyntax(_syntaxTree, keyword);
-        }
-
-        private StatementSyntax ParseContinueStatement()
-        {
-            var keyword = MatchToken(SyntaxKind.ContinueKeyword);
-            return new ContinueStatementSyntax(_syntaxTree, keyword);
-        }
-
-        private StatementSyntax ParseReturnStatement()
-        {
-            var keyword = MatchToken(SyntaxKind.ReturnKeyword);
-            var keywordLine = _text.GetLineIndex(keyword.Span.Start);
-            var currentLine = _text.GetLineIndex(Current.Span.Start);
-            var isEof = Current.Kind == SyntaxKind.EndOfFileToken;
-            var sameLine = !isEof && keywordLine == currentLine;
-            var expression = sameLine ? ParseExpression() : null;
-            return new ReturnStatementSyntax(_syntaxTree, keyword, expression);
         }
 
         private ExpressionStatementSyntax ParseExpressionStatement()

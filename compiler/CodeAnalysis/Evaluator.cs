@@ -236,24 +236,13 @@ namespace compiler.CodeAnalysis
 
         private object EvaluateCallExpression(BoundCallExpression node)
         {
-            if (node.Function == BuiltinFunctions.Input)
-            {
-                return Console.ReadLine();
-            }
-            else if (node.Function == BuiltinFunctions.Print)
+            if (node.Function == BuiltinFunctions.Print)
             {
                 var message = (string)EvaluateExpression(node.Arguments[0]);
                 Console.WriteLine(message);
                 return null;
             }
-            else if (node.Function == BuiltinFunctions.Rnd)
-            {
-                var max = (int)EvaluateExpression(node.Arguments[0]);
-                if (_random == null)
-                    _random = new Random();
-
-                return _random.Next(max);
-            }
+        
             else
             {
                 var locals = new Dictionary<VariableSymbol, object>();
